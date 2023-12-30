@@ -12,9 +12,7 @@ const { PORT, MONGODB_URL } = process.env;
 mongoose
   .connect(MONGODB_URL, {
     useNewUrlParser: true,
-    useUnifiedTopology: true,
-    useCreateIndex: true, // Keep this line for backward compatibility (optional)
-    createIndexes: true, // Add this line
+    useUnifiedTopology: true
   })
   .then(() => console.log("MongoDB Connected"))
   .catch((err) => console.log(err));
