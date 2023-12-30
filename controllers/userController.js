@@ -9,7 +9,8 @@ const mongoose = require('mongoose');
 mongoose.connect(process.env.MONGODB_URL, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
-  useCreateIndex: true,
+  useCreateIndex: true, // Keep this line for backward compatibility (optional)
+  createIndexes: true, // Add this line
 });
 
 const db = mongoose.connection;
