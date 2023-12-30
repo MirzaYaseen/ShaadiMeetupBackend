@@ -5,6 +5,22 @@ const jwt = require('jsonwebtoken');
 // @route   POST api/users
 // @desc    Register new user
 // @access  Public
+const mongoose = require('mongoose');
+mongoose.connect(process.env.MONGODB_URL, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  useCreateIndex: true,
+});
+
+const db = mongoose.connection;
+
+db.on('error', (error) => {
+  console.error('MongoDB connection error:', error);
+});
+
+db.once('open', () => {
+  console.log('MongoDB connected successfully');
+});
 exports.register = async (req, res) => {
     const { name, email, password } = req.body;
 
